@@ -1,0 +1,28 @@
+basically a software that has different student records, and you can view thw courses they're offerring.
+
+there would be student table,
+each student will have a {name, age, matric-number, level, courses they're offering}
+
+courses: max of 5 
+
+sooo
+from postman we would be able to:
+see all students    GetAllStudents
+see a student       GetStudent
+create a new student NewStudent
+Delete a student    DeleteStudent
+Update student data UpdateStudent
+
+when creating a new student;
+we must specify the courses
+Matric Number should be used to identify (Key)
+
+Routes for basic student information, and routes to view student course
+Soo i guess we could make it so that we can create a student without specifying the courses that the student will
+offer.
+
+AddCourse   ultimately going to be a list (append the list of courses to the database)
+RemoveCourse  one cocurse at a time.
+
+
+student can only enroll from available courses .
