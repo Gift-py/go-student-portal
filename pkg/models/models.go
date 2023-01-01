@@ -27,10 +27,8 @@ type Course struct {
 }
 
 type StudentCourse struct {
-	// student_id  uint
-	// course_id   uint
-	mat_no      string
-	course_code string
+	student_id uint
+	course_id  uint
 }
 
 func init() {
@@ -95,10 +93,17 @@ func DeleteCourse(id string) (Course, error) {
 	return course, err
 }
 
-func GetStudentCourses(id string) ([]Course, error) {
-	var courses []Course
-	err := DB.Table("student_courses").Where("mat_no=?", id).Find(&courses).Error
-	return courses, err
+// student courses
+func GetStudentCourses(id string) ([]uint, error) {
+	student, err := GetStudent(id)
+	if err != nil {
+		panic(err)
+	}
+
+	var course_ids []uint
+	err = DB.Table("student_courses").Select("course_id").Where("student_id=?", student.ID).Find(&course_ids).Error
+
+	return course_ids, err
 }
 
 func AddStudentCourse(sid string, cid string) (StudentCourse, error) {
@@ -112,10 +117,8 @@ func AddStudentCourse(sid string, cid string) (StudentCourse, error) {
 	}
 
 	data := StudentCourse{
-		// student_id:  student.ID,
-		// course_id:   course.ID,
-		mat_no:      student.StudentID,
-		course_code: course.CourseCode,
+		student_id: student.ID,
+		course_id:  course.ID,
 	}
 	fmt.Println(data)
 	DB.Table("student_courses").Save(&data)

@@ -14,7 +14,7 @@ var RegisterRoutes = func(route *mux.Router) {
 	route.HandleFunc("/students/{sid}", controllers.DeleteStudent).Methods("DELETE")
 
 	//student courses
-	route.HandleFunc("student/courses/{sid}", controllers.GetStudentCourses).Methods("GET")
+	route.HandleFunc("/students/courses/{sid}", controllers.GetStudentCourses).Methods("GET")
 	route.HandleFunc("/students/courses/{sid}", controllers.AddStudentCourse).Methods("PUT")
 	route.HandleFunc("/Students/courses/{sid}", controllers.DeleteStudentCourse).Methods("DELETE")
 
