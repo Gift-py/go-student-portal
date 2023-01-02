@@ -198,7 +198,7 @@ func GetStudentCourses(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(courses)
+
 	res, err := json.Marshal(courses)
 	if err != nil {
 		panic(err)
